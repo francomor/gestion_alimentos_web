@@ -96,58 +96,68 @@
                 </section>
                 
                 <!-- Form : Registro Establecimiento --> 
-		<section>
+                <form method="post" action="#">
+                    <section>
                     <h3>Registro RNE</h3>
-                    <form method="post" action="#">
 			<div class="row uniform 50%">
                             <div class="6u 12u$(xsmall)">
-				RNE: <input type="text" name="rne_em" id="rne_em" value="" placeholder="RNE Empresa " />
+                                RNE: <input type="text" class="validate" name="rne_em" id="rne_em" value="" placeholder="" />
                             </div>
                             <div class="6u$ 12u$(xsmall)">
-                                <input type="date" name="fech" id="fec" value="" />
+				<input type="text" class="datepicker" name="fech" id="fec" value="" />
                             </div>
                             <div class="6u$ 12u$(xsmall)">
 				<h3>Datos del Establecimiento</h3>
                             </div>
                                         
                              <div class="6u 12u$(xsmall)">
-				<input type="text" name="nomb_em" id="nomb_em" value="" placeholder="Nombre Empresa " /></br>
-                                <input type="text" name="cat_em" id="cat_em" value="" placeholder="Categoria " /></br>
-                                <input type="text" name="nofac_em" id="nofac_em" value="" placeholder="No. Factura " /></br>
-                                <input type="text" name="prov_em" id="prov_em" value="" placeholder="Provincia " /></br>
-                                           
+				Nombre de la Empresa: <input type="text" name="nomb_em" id="nomb_em" value="" placeholder=" " />
+                                Categoria: <input type="text" name="cat_em" id="cat_em" value="" placeholder=" " />
+                                No. Factura: <input type="text" name="nofac_em" id="nofac_em" value="" placeholder=" " />
+                                Provincia: <input type="text" name="prov_em" id="prov_em" value="" placeholder="" />
                             </div>
                             <div class="6u 12u$(xsmall)">
-                                 Domicilio: <input type="text" name="domc_em" id="rne_em" value="" placeholder="Domicilio" />
+				 Domicilio: <input type="text" name="domc_em" id="rne_em" value="" placeholder="" />
                             </div>
-                             <div class="6u 12u$(xsmall)">
-                                Localidad: <input type="text" name="loc_em" id="rne_em" value="" placeholder="Localidad" />
-                            </div>       
-                        </div><!--Fin DatosEspecEmpresa-->
-                        
-                        <div class="row">
-                            <div class="4u 6u(medium) 12u$(xsmall)">
-                                <ul class="actions vertical">
-                                     Rubro: <textarea name="rubros_em" id="rubros_em" placeholder="rubros" rows="8" disabled></textarea>
-                                </ul>
+                            <div class="6u 12u$(xsmall)">
+				Localidad: <input type="text" name="loc_em" id="rne_em" value="" placeholder="" />
                             </div>
-                            <div class="3u 6u$(medium) 12u$(xsmall)">
-                                <ul class="actions vertical small">
-                                    <li><a href="#" class="button small">Agregar</a></li>
-                                    <li><a href="#" class="button small special">Quitar</a></li>
-                                    <li><a href="#" class="button small">Nuevo</a></li>
-                                </ul>
+                        </div></br>
+                        </section>
+                        <section>
+                            <div class="table-wrapper">
+                                 <table>
+                                     <thead>
+                                        <tr>
+                                            <th>Rubro:</th>
+                                            <th> 
+                                            </th>
+                                            <th>Rubro:</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       <tr>
+                                            <td><div class="collection">
+                                       		<a href="#!" class="collection-item">Rub...</a>
+                                       
+                                     		</div>
+                                            </td>
+                                            <td>
+                                                <ul class="actions vertical small">
+                                                    <li><a id="btAdd" class="button small">Agregar</a></li>
+                                                    <li><a id="btQuit" class="button small special">Quitar</a></li>
+                                                    <li><a id="btNuv" class="button small">Nuevo</a></li>
+                                                </ul>
+                                                        
+                                            </td>
+                                            <td> </td>
+                                        </tr>
+                                                
+                                    </tbody>
+                                </table>
                             </div>
-                            <div class="4u 6u(medium) 12u$(xsmall)">
-                                <ul class="actions vertical">
-                                     Rubro: <textarea name="rubros_em" id="rubros_em" placeholder="rubros" rows="8" disabled></textarea>
-                                </ul>
-                            </div>
-                        </div><!--Fin Rubros-->
-                    </form><!--Fin Form Datos de la Empresa-->
-                </section>
-                                  
-                                  
+                        </section>
+                </form>             
             </div><!-- Fin class=container -->
         </div><!-- Fin class=wrapper stylele -->
         </div><!-- Fin class=page-wrapper -->
