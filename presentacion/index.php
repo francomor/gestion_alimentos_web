@@ -16,12 +16,12 @@
             <h1 id="logo"><a>Gobierno de Rio Negro</a></h1>
             <nav id="nav">
 		<ul>
-                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="index.php">Inicio</a></li>
                     <li>
 			<a href="#">Tramites</a>
 			<ul>
                             <li><a href="" >Carga Prod.Alimenticio</a></li>
-                            <li><a href="establecimientos.html">Carga Establecimiento</a></li>
+                            <li><a href="establecimientos.php">Carga Establecimiento</a></li>
 									
 			</ul>
                     </li>
