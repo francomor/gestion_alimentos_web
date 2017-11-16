@@ -18,17 +18,17 @@
                 <h1 id="logo"><a>Gobierno de Rio Negro</a></h1>
                 <nav id="nav">
                     <ul>
-                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="index.php">Inicio</a></li>
                         <li>
                             <a href="#">Tramites</a>
                             <ul>
                                 <li><a  href="" >Carga Prod.Alimenticio</a></li>
-                                <li><a href="">Carga Establecimiento</a></li>
+                                <li><a href="establecimientos.php">Carga Establecimiento</a></li>
 
                             </ul>
                         </li>
                         <li>
-                             <a href="elements.html">Conultas</a>
+                             <a href="">Conultas</a>
                              <ul>
                                 <li><a  href="#one" >Consultar RNE</a></li>
                                 <li><a href="#one" onClick="muestraEsta()">Consultar RNPA</a></li>
