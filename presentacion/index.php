@@ -28,8 +28,8 @@
                     <li>
                         <a>Conultas</a>
                         <ul>
-                            <li><a  href="#one" >Consultar RNE</a></li>
-                            <li><a href="#one" onClick="muestraEsta()">Consultar RNPA</a></li>
+                            <li><a  href="" >Consultar RNE</a></li>
+                            <li><a href="" onClick="muestraEsta()">Consultar RNPA</a></li>
                         </ul>
                             
                     </li>
