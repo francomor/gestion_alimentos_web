@@ -9,6 +9,7 @@ error_reporting(E_ALL);
 class ConexionBD {
 
     private $_connection;
+    private $_results;
     private static $_instance; //The single instance
     private $_host = "localhost";
     private $_username = "root";
@@ -63,18 +64,42 @@ class ConexionBD {
     }
 
     public function recuperar($consulta) {
+        $_res= array();
         if ($resultado = $this->_connection->query($consulta)) {
             /* obtener el array de objetos */
             while ($fila = $resultado->fetch_row()) {
                 //printf("%s \n", $fila[0]);
-                $this->_results[] = $fila;
+                //$this->_results[] = $fila;
+                $_res[] = $fila;
             }
 
             /* liberar el conjunto de resultados */
-            $resultado->close();
+            
+            mysqli_free_result($resultado);
+            //$resultado->close();
+            //unset($resultado);
+            
         }
-        return $this->_results;
+        return $_res;
+        //return $this->_results;
     }
+    
+    public function recuperar1($consulta)
+            {
+        $_res= array();
+        if ($resultado = $this->_connection->query($consulta)) {
+                while($row = $resultado->fetch_array(MYSQLI_ASSOC))
+                    {
+                        //$this->_results[] = $row;
+                        $_res[] = $row;
+                        
+                    }
+                   mysqli_free_result($resultado);
+
+            }
+            return $_res;
+            //return $this->_results;
+            }
 
     
     public function existe($consulta) {
@@ -88,11 +113,13 @@ class ConexionBD {
         else {
             echo "Error: " . $consulta . "<br>" . $this->_connection->error;
         }
+       
         return $result;
     }
 
     public function cerrarConexion() {
-        mysqli_close($this->_connection);
+        //$this->_connection->close();
+        //mysqli_close($this->_connection);
     }
 
 }

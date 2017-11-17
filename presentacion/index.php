@@ -28,8 +28,8 @@
                     <li>
                         <a>Conultas</a>
                         <ul>
-                            <li><a  href="" >Consultar RNE</a></li>
-                            <li><a href="" onClick="muestraEsta()">Consultar RNPA</a></li>
+                            <li><a  href="consultaRE.php" >Consultar RNE</a></li>
+                            <li><a href="consultaRA.php">Consultar RNPA</a></li>
                         </ul>
                             
                     </li>
@@ -48,7 +48,7 @@
                     </header>
                     <span class="image"><img src="../resources/images/pic01.jpg" alt="RN" /></span>
 		</div>
-		<a href="#one" class="goto-next scrolly">Next</a><!--Se usa para hacer el cambio dinamico del div-->
+		<a href="" class="goto-next scrolly">Next</a><!--Se usa para hacer el cambio dinamico del div-->
             </section>
         </div>
     </div>
