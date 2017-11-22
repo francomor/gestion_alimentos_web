@@ -1545,9 +1545,6 @@
 
 /* Basic */
 
-	html, body {
-		background: #1c1d26;
-	}
 
 	body.is-loading *, body.is-loading *:before, body.is-loading *:after {
 		-moz-animation: none !important;
@@ -2139,6 +2136,21 @@
 			width: 75%;
 			
 		}
+
+		.submajor{
+			margin:0 0 0 0;
+		position: relative;
+		text-align: center;
+			}
+			.submajor:after{
+				background: #50D110;
+			content: '';
+			display:inline-block;
+			
+			height: 0.1em;
+			max-width: 25em;
+			width: 75%;
+				}
 
 	footer.major {
 		margin: 4em 0 0 0;
@@ -2925,7 +2937,6 @@
 			.wrapper.style2 input[type="text"]:focus,
 			.wrapper.style2 input[type="password"]:focus,
 			.wrapper.style2 input[type="email"]:focus,
-			.wrapper.style2 select:focus,
 			.wrapper.style2 textarea:focus {
 				border-color: rgba(255, 255, 255, 0.5);
 			}

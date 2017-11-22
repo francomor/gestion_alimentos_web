@@ -12,127 +12,46 @@
 	<!--[if lte IE 9]><link rel="stylesheet" href="../resources/css/ie9.css" /><![endif]-->
 	<!--[if lte IE 8]><link rel="stylesheet" href="../resources/css/ie8.css" /><![endif]-->
     </head>
-    <body>    
+    <body  style="background: #1c1d26;">    
+   
         <div id="page-wrapper">
 
-        <!-- Header -->
-            <header id="header">
-                <h1 id="logo"><a>Gobierno de Rio Negro</a></h1>
-                <nav id="nav">
-                    <ul>
-                        <li><a href="index.php">Inicio</a></li>
-                        <li>
-                            <a href="#">Tramites</a>
-                            <ul>
-                                <li><a  href="" >Carga Prod.Alimenticio</a></li>
-                                <li><a href="establecimientos.php">Carga Establecimiento</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                             <a href="">Conultas</a>
-                             <ul>
-                                <li><a  href="consultaRE.php" >Consultar RNE</a></li>
-                                <li><a href="consultaRA.php">Consultar RNPA</a></li>
-                            </ul>
-
-                        </li>
-                        <li><a>Estadisticas</a></li>
-                    </ul>
-                </nav>
-            </header>
+        	<div><?php
+	
+		include("header.php");
+    ?></div>
         <!-- Main -->
+        <header class="major">
+                   <h2>Consulta por RNPA</h2>     
+                 </header> 
+
         <div id="main" class="wrapper style1">
+        
             <div class="container">
-                <header class="major">
-                        <h2>Consulta por RNPA</h2>
-                </header>            
+                          
             
             	<!-- Form : Buscar por RNA Empresa--> 
-		<section>
-        			<h4>RNPA Empresa</h4>
+	
+        			
                     <form method="post" action="#">
-			<div class="row uniform 50%">
-                            <div class="6u 12u$(xsmall)">
-                                <input type="text" name="rnpa_em" id="rnpa_em" value="" />
+                    			<h4>Buscar RNPA de la Empresa: </h4>
+							<div class="row ">
+            				
+            				
+                            <div class="input-field col s5">
+                                <input type="text" name="rnpa_em" id="rnpa_em" value="" class="validate" onkeyup="consulta_rnpa(this.value)"/>
+                               
                             </div>
-                            <div class="6u$ 12u$(xsmall)">
-				<input type="image" name="search" id="search" src="../resources/images/search.png" />
-                            </div>
+                            <div class="4u 12u\$(xsmall)" align="left" style="padding-top:2.5em;">
+                                <img src="../resources/images/search.png" width="20" height="20" alt="search">
+                             </div>
                         </div>
                     </form><!-- finForm_Buscar -->
-                </section>
+          
                 <!-- Table -->
-		<section>
-                    <h4>Datos de la Empresa</h4>
-                   <div class="table-wrapper">
-                    <table>
-                        <thead>
-                            <tr>
-				<th>Nombre</th>
-				<th>Razón Social </th>
-				<th>Direccion</th>
-                                <th>Email</th>
-                                <th>Telefono</th>
-                            </tr>
-			</thead>
-			<tbody>
-                            <tr>
-                                <td></td>
-                                <td></td>
-				<td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-										
-			</tbody>
-                    </table>
-                    </div>
-                    <h4>Establecimientos Asociados</h4>
-			<div class="table-wrapper">
-                            <table>
-				<thead>
-                                    <tr>
-					<th>No. RNE</th>
-					<th>Nombre Establecimiento </th>
-					<th>Rubro</th>
-                                        <th>Vencimiento RNE</th>
-                                        <th>Direccion</th>
-                                    </tr>
-				</thead>
-				<tbody>
-                                    <tr>
-					<td></td>
-					<td></td>
-					<td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-				</tbody>
-			</table>
-			</div>
-                        <h4>Producto Alimenticio Asociado</h4>
-			<div class="table-wrapper">
-                            <table>
-				<thead>
-                                    <tr>
-					<th>No. RNPA</th>
-                                            <th>No. RNE</th>
-                                            <th>Nom. Producto</th>
-                                            <th>Vencimiento RNPA</th>
-                                            <th>Marca</th>
-                                    </tr>
-				</thead>
-                                <tbody>
-                                    <tr>
-					<td></td>
-					<td></td>
-					<td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-			</table>
-                    </div>					
+					<section>
+                 <div id="consulta">  </div> <!-- aca cierra el div de la consulta-->
+                   
                 </section>
                 
                 
@@ -140,7 +59,20 @@
 
             </div><!-- Fin class=container -->
         </div><!-- Fin class=wrapper stylele -->
-        </div><!-- Fin class=page-wrapper -->
+  </div><!-- Fin class=page-wrapper -->
+        <script>
+        function consulta_rnpa(rnpa)   
+			    {  
+                            var xmlhttp = new XMLHttpRequest();
+                            xmlhttp.onreadystatechange = function() {
+                            if (this.readyState == 4 && this.status == 200) {
+                            document.getElementById("consulta").innerHTML = this.responseText;
+                            }
+                                 };
+                            xmlhttp.open("GET", "../logica/consultarnpa.php?rnpa=" + rnpa, true);
+                            xmlhttp.send();
+			   }  
+        </script>
         <!-- Scripts -->
 			<script src="../resources/js/jquery.min.js"></script>
 			<script src="../resources/js/jquery.scrolly.min.js"></script>
@@ -150,7 +82,7 @@
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="../resources/js/main.js"></script>
             <script src="../resources/js/materialize.js"></script>
-           	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+           	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script> 
        
 
 

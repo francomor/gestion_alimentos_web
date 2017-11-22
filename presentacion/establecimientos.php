@@ -1,51 +1,24 @@
 <!DOCTYPE HTML>
 <?php
-include ('../logica/logica.php');
-//error_reporting(E_ALL);
-
-
+include("../logica/clases.php");
+include("../logica/validar_cuit.php");
+error_reporting(E_ALL ^ E_NOTICE);
 ?>
 <html>
     <head>  
 	<title>Carga Establecimientos</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<!--[if lte IE 8]><script src="../resources/js/ie/html5shiv.js"></script><![endif]-->
-	<link rel="stylesheet" href="../resources/css/main.css" />
-        <link rel="stylesheet" href="../resources/css/materialize.css" />
-    
-	<!--[if lte IE 9]><link rel="stylesheet" href="../resources/css/ie9.css" /><![endif]-->
-	<!--[if lte IE 8]><link rel="stylesheet" href="../resources/css/ie8.css" /><![endif]-->
-    </head>
-    <body onload="cargar()">   
-        <div id="page-wrapper">
+	<link rel="stylesheet" href="../resources/css/materialize.css" />
+   </head>
+<body onload="cargar()" style="background: #1c1d26;"> 
+    <div>
+        <?php
+            include("header.php");
+        ?>
+    </div>
+    <div id="page-wrapper">
 
-        <!-- Header -->
-            <header id="header">
-                <h1 id="logo"><a>Gobierno de Rio Negro</a></h1>
-                <nav id="nav">
-                    <ul>
-                        <li><a href="index.php">Inicio</a></li>
-                        <li>
-                            <a href="">Tramites</a>
-                            <ul>
-                                <li><a  href="" >Carga Prod.Alimenticio</a></li>
-                                <li><a href="establecimientos.php">Carga Establecimiento</a></li>
-
-                            </ul>
-                        </li>
-                        <li>
-                             <a href="">Conultas</a>
-                             <ul>
-                                <li><a  href="consultaRE.php" >Consultar RNE</a></li>
-                                <li><a href="consultaRA.php">Consultar RNPA</a></li>
-                            </ul>
-
-                        </li>
-                        <li><a>Estadisticas</a></li>
-                    </ul>
-                </nav>
-            </header>
         <!-- Main -->
         <div id="main" class="wrapper style1">
             <div class="container">
@@ -54,149 +27,135 @@ include ('../logica/logica.php');
                 </header>            
             
             	<!-- Form : Buscar por CUIT Empresa--> 
-		<section>
-                    <h4>CUIT Empresa</h4>
-                    <form method="post" action="../logica/logica.php">
+                <form method="post" action="../logica/cargarrne.php" class="col s12" onsubmit="return validar()" id="formu">
 			<div class="row uniform 50%">
-                            <div class="6u 12u$(xsmall)">
-                                <input name="cuit" onKeyUp="comprobar_cuit(this.value)" value="1" />
+                            <h4>CUIT Empresa</h4>
+                            <div class="4u 6u\$(xsmall)">
+                                <input name="cuit" onkeyup="comprobar_cuit(this.value)" required="true" value="1" />
                             </div>
-                            <div class="6u$ 12u$(xsmall)">
-				<input type="image" name="search" id="search" src="../resources/images/search.png" />
-                            </div>
-                        </div>
-                    
-                </section>
-                <!-- Table -->
-		<section>
-                    <h4>Datos de la Empresa</h4>
-                            <div>
-
-	        <span id="cambiar_cuit"></span> 
-
-        </div>  
-                    
-                </section>
-                
-                <!-- Form : Registro Establecimiento --> 
-              
-                    <section>
-                    <h4>Registro RNE</h4>
-			<div class="row uniform 50%">
-                            <div class="6u 12u$(xsmall)">
-                                RNE: <input type="text" class="validate" name="rne" id="rne_em" value="1" placeholder="" />
-                            </div>
-                            <div class="6u$ 12u$(xsmall)">
-                                Fecha:<input type="text"  name="venc" id="fec" value="2017-11-02" placeholder="2017-11-02" />
-                            </div>
-                            <div class="6u$ 12u$(xsmall)">
-				<h4>Datos del Establecimiento</h4>
-                            </div>
-                                        
-                             <div class="6u 12u$(xsmall)">
-				Nombre de la Empresa: <input type="text" name="nombre"  value="aaa" placeholder=" " />
-                                Categoria: <input type="text" name="categoria"  value="a" placeholder=" " />
-                                No. Factura: <input type="text" name="nro_factura"  value="1" placeholder=" " />
-                                Provincia: <input type="text" name="provincia"  value="a" placeholder="" />
-                            </div>
-                            <div class="6u 12u$(xsmall)">
-				 Domicilio: <input type="text" name="domicilio"  value="a" placeholder="" />
-                            </div>
-                            <div class="6u 12u$(xsmall)">
-				Localidad: <input type="text" name="localidad"  value="bariloche" placeholder="" />
-                            </div>
-                            <div class="6u 12u$(xsmall)">
-				Telefono: <input type="text" name="telefono"  value="111" placeholder="" />
-                            </div>
+                            <div class="4u 12u\$(xsmall)" align="left" style="padding-top:2.5em;">
+                                <img src="../resources/images/search.png" width="20" height="20" alt="search">
+                             </div>
                         </div></br>
+                        <section>
+                            <div><span id="cambiar_cuit"></span></div>  
                         </section>
                         <section>
-                            <div class="table-wrapper">
-                                 <table>
-                                     <thead>
-                                        <tr>
-                                            <th>Rubro:</th>
-                                            <th> 
-                                            </th>
+                        <h4>Registro RNE</h4>
+                           <div class="row">
+                                    <div class="input-field col s6">
+                                      <input name="rne" id="rne" type="text" class="validate" value="">
+                                      <label >RNE: </label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                      <input id="venc" name="venc" type="text" class="validate"  maxlength="12"  value="2017-11-02" pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" placeholder="2017-11-02">
+                                      <label >Fecha de vencimiento : </label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                    <h4>Datos del Establecimiento</h4></br>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <input name="nombre" id="nombre" type="text" class="validate" required pattern="[A-Za-z]" required="true" value="A">
+                                    <label >Nombre del Establecimiento:</label>
+                                    </div>
+
+                                    <div class="input-field col s6">
+                                    <select  name="categoria" id="categoria" required="true">
+                                      <option value="seleccionar..." disabled selected>sleccionar...</option>
+                                      <option value="A">A</option>
+                                      <option value="B">B</option>
+                                      <option value="C">C</option>
+                                      <option value="D">D</option>
+                                    </select>
+                                    <label>Categoria</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                        <input  name="nro_factura" type="number" class="validate" value="" >
+                                      <label >No. Factura: </label>
+                                    </div>
+
+                                    <div class="input-field col s6">
+                                      <input name="domicilio" type="text" class="validate" required pattern="[A-Za-z0-9]+" required="true" value="">
+                                      <label >Domicilio: </label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                        <select id="localidad" name="localidad" required="true">
+                                        <option value="seleccionar..." disabled selected>seleccionar...</option>
+                                        <option value="Bariloche">Bariloche</option>
+                                        <option value="El bolson">El Bolson</option>
+                                        </select>
+                                    <label>Localidad: </label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                      <input  name="telefono" type="number" class="validate" value="" >
+                                      <label >Telefono: </label>
+                                    </div>
+                                  </div> 
+                        </section>
+                        <div class="row">
+                            <div class="col s4">
+                                <table width="98%" height="312">
+                                    <thead>
+                                         <tr>
                                             <th>Rubro:</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                        <tr>
-                                            <td><div class="collection">
-                                       		<a href="#!" class="collection-item">Rub...</a>
-                                       
-                                     		</div>
-                                            </td>
                                             <td>
-                                                <ul class="actions vertical small">
-                                                    <li><a id="btAdd" class="button small">Agregar</a></li>
-                                                    <li><a id="btQuit" class="button small special">Quitar</a></li>
-                                                    <li><a id="btNuv" class="button small">Nuevo</a></li>
-                                                </ul>
-                                                        
+                                                <label for="sel1">Origen:</label>
+                                                <div id="aca">
+                                                   <!--Select de rubros  -->
+                                                </div>
                                             </td>
-                                            <td> </td>
                                         </tr> 
                                     </tbody>
                                 </table>
-                            </div>hola
-            <div class="input-field col s12">
-    <select>
-      <option value="" disabled selected>Choose your option</option>
-      <option value="1">Option 1</option>
-      <option value="2">Option 2</option>
-      <option value="3">Option 3</option>
-    </select>
-    <label>Materialize Select</label>
-  </div>
-                        </section>
-                     <ul class="actions vertical small">
-                                                   
-                         <li><input type="submit" id="submit" name="submit" class="button small special" value="Guardar"/></li>
+                            </div>
+                            <div class="col s4" align="center">
+                                <ul class="actions vertical small">
+                                    <li><input type="button"  class="button small" value="Agregar" onClick="pasar()"></li>
+                                    <li><input type="button"  class="button small"  value="Quitar" onClick="quitar()"></li>
+                                </ul>
+                            </div>
+                            <div class="col s4">
+                              	<table>
+                                    <thead>
+                                        <tr>
+                                            <th>Rubro:</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       <tr>
+                                            <td>
+                                                <label for="sel2">Destino:</label>
+                                                <select class="browser-default" id="sel2" size="5">
+                                                <option value="-">-</option>
+                                                </select>
+                                            </td>
+                                        </tr> 
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col s12"> 
+                     	<ul class="actions vertical small">
+                        <input type="text" value="" name="rubros" id="rubros" hidden>                        
+                         <li>
+                             <input type="submit" id="submit" name="submit" class="button small special" value="Guardar" />
+                         </li>
                                                     
-                    </ul>   
-                </form>
-                        
-<form>
-<label for="sel1">Origen:</label>
-<div id="aca">
-<select id="sel1" size="10" multiple="multiple">
-<?php 
-
-    $conexion = mysql_connect("localhost", "root", "1707yoss")
-        or die("No se puede conectar con el servidor");
-
-// Seleccionar base de datos
-mysql_select_db("uresa")
-        or die("No se puede seleccionar la base de datos");
-
-$instruccion = "SELECT nombre FROM `rubro`";
-    $consulta = mysql_query($instruccion, $conexion)
-            or die("Fallo en la consulta");
-        $nfilas = mysql_num_rows($consulta);
-        for($i=0 ; $i<$nfilas ; $i++){
-    $resultado = mysql_fetch_array($consulta);
-            print('<option value="'.$resultado["nombre"].'"> '.$resultado["nombre"].'</option>');
-        }
-    
-?>
-</select>
-</div>
-<label for="sel2">Destino:</label>
-<select id="sel2" size="5">
-<option value="-">-</option>
-</select>
-<input type="button" value="Pasar" onClick="pasar()">
-</form>
-
-            </div><!-- Fin class=container -->
+                        </ul>
+                        </div>
+                     </form>
+                </div>
         </div><!-- Fin class=wrapper stylele -->
-        </div><!-- Fin class=page-wrapper -->
-        
-        <script type="text/javascript">
+    </div><!-- Fin class=page-wrapper -->
+                               
+
+<script type="text/javascript">
 			    
-                            function comprobar_cuit(cuit)   
+            function comprobar_cuit(cuit)   
 			    {  
                             var xmlhttp = new XMLHttpRequest();
                             xmlhttp.onreadystatechange = function() {
@@ -204,22 +163,24 @@ $instruccion = "SELECT nombre FROM `rubro`";
                             document.getElementById("cambiar_cuit").innerHTML = this.responseText;
                             }
                                  };
-                            xmlhttp.open("GET", "../logica/logica.php?cuit=" + cuit, true);
+                            xmlhttp.open("GET", "../logica/validar_cuit.php?cuit=" + cuit, true);
                             xmlhttp.send();
-			   }  
-                            function cargar()   
-			   
+            }  
+            function cargar()	   
             {  
-            var xmlhttp = new XMLHttpRequest();
+                var xmlhttp = new XMLHttpRequest();
                             xmlhttp.onreadystatechange = function() {
                             if (this.readyState == 4 && this.status == 200) {
                             document.getElementById("aca").innerHTML = this.responseText;
                             }
                                  };
-                            xmlhttp.open("GET", "../logica/logica.php?", true);
+                            xmlhttp.open("GET", "../logica/rubros.php", true);
                             xmlhttp.send();
 	   }  
            
+          
+  </script> 
+  <script type="text/javascript">
            function pasar() {
     obj=document.getElementById('sel1');
     if (obj.selectedIndex==-1) return;
@@ -233,31 +194,82 @@ $instruccion = "SELECT nombre FROM `rubro`";
         obj2.options[0]=null;
         opc = new Option(txt,valor);
         eval(obj2.options[obj2.options.length]=opc);
-  } 
-    
+  }
+     if(obj.options.length==0){
+        opc = new Option("-","-");
+        eval(obj.options[obj.options.length]=opc);
+   } 
 }
-		   </script>  
-        <!-- Scripts -->
-			<script src="../resources/js/jquery.min.js"></script>
-			<script src="../resources/js/jquery.scrolly.min.js"></script>
-			<script src="../resources/js/jquery.dropotron.min.js"></script>
-                        <!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>-->
-			<script src="../resources/js/skel.min.js"></script>
-			<script src="../resources/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="../resources/js/main.js"></script>
-                        <script src="../resources/js/materialize.js"></script>
-                <script> 	
+  </script>  
+  <script>
+function quitar() {
+    obj=document.getElementById('sel2');
+    if (obj.selectedIndex==-1) return;
+  for (i=0; opt=obj.options[i]; i++)
+    if (opt.selected) {
+        valor=opt.value; // almacenar value
+        txt=obj.options[i].text; // almacenar el texto
+        obj.options[i]=null; // borrar el item si está seleccionado
+        obj2=document.getElementById('sel1');
+      if (obj2.options[0].value=='-') // si solo está la opción inicial borrarla
+        obj2.options[0]=null;
+        opc = new Option(txt,valor);
+        eval(obj2.options[obj2.options.length]=opc);
+  }
+   if(obj.options.length==0){
+        opc = new Option("-","-");
+        eval(obj.options[obj.options.length]=opc);
+   }
+}
+</script>
+<script>
+    function cargar_rubros(){
+        
+        rubros = new Array();
+        for(var i=0; i<document.getElementById("sel2").length; i++){
+                        rubros[i]=document.getElementById("sel2").options[i].value;
+        }
+        for(var j=0; j<rubros.length; j++){
+            document.getElementById("rubros").value = document.getElementById("rubros").value+rubros[j]+";";
+            }
+          
+    }
+    
+    function validar(){
+        var retorno=false;
+        var rubros = document.getElementById("sel2").options[0].value;
+        var localidad = document.getElementById('localidad').value;
+        var categoria = document.getElementById('categoria').value;
+        var escape="seleccionar..." ;
+        if(localidad===escape && categoria === escape){
+            alert("Faltan llenar campos");
+        }
+        else if(localidad===escape ){
+             alert("Debe seleccionar una localidad");
+        }else if(categoria === escape){
+            alert("Debe seleccionar una categoria");
+        }else if(rubros==="-"){
+            alert("Debe agregar al menos un rubro");
+        }
+        if (localidad!==escape && categoria!==escape && rubros!=="-"){
+            cargar_rubros();
+            retorno=true;
+        }
+         return retorno;
+        
+    }
+ </script> 
+  
+<!-- Scripts -->
+ <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+ <script src="../resources/js/materialize.js"></script>
+ 
+ <script> 	
          $(document).ready(function() {
     $('select:not([multiple])').material_select();
   });
 </script>
-            <!-- <script src="../resources/js/prototype.js"></script>-->
-             
-             
-             
-         
+ 
 
-
-    </body>
+</body>
 </html>

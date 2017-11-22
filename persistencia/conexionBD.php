@@ -48,11 +48,14 @@ class ConexionBD {
     }
 
     public function insertar($consulta) {
+        $guardado=false;
         if ($this->_connection->query($consulta) === TRUE) {
+            $guardado=true;
             echo "New record created successfully";
         } else {
             echo "Error: " . $consulta . "<br>" . $this->_connection->error;
         }
+        return $guardado;
     }
 
     public function update($consulta) {
@@ -115,6 +118,17 @@ class ConexionBD {
         }
        
         return $result;
+    }
+    
+    public function cantidad_registros($consulta){
+         $row_cnt=-1;
+         if ($resultado = $this->_connection->query($consulta)) {
+             $row_cnt = $resultado->num_rows;
+         }
+          else {
+            echo "Error: " . $consulta . "<br>" . $this->_connection->error;
+        }
+        return $row_cnt;
     }
 
     public function cerrarConexion() {

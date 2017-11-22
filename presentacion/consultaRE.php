@@ -12,34 +12,13 @@
 	<!--[if lte IE 9]><link rel="stylesheet" href="../resources/css/ie9.css" /><![endif]-->
 	<!--[if lte IE 8]><link rel="stylesheet" href="../resources/css/ie8.css" /><![endif]-->
     </head>
-    <body>    
+    <body style="background: #1c1d26;">    
         <div id="page-wrapper">
 
-        <!-- Header -->
-            <header id="header">
-                <h1 id="logo"><a>Gobierno de Rio Negro</a></h1>
-                <nav id="nav">
-                    <ul>
-                        <li><a href="index.php">Inicio</a></li>
-                        <li>
-                            <a href="#">Tramites</a>
-                            <ul>
-                                <li><a  href="" >Carga Prod.Alimenticio</a></li>
-                                <li><a href="establecimientos.php">Carga Establecimiento</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                             <a href="">Conultas</a>
-                             <ul>
-                                <li><a  href="consultaRE.php" >Consultar RNE</a></li>
-                                <li><a href="consultaRA.php">Consultar RNPA</a></li>
-                            </ul>
-
-                        </li>
-                        <li><a>Estadisticas</a></li>
-                    </ul>
-                </nav>
-            </header>
+         	<div><?php
+	
+		include("header.php");
+   			 ?></div>
         <!-- Main -->
         <div id="main" class="wrapper style1">
             <div class="container">
