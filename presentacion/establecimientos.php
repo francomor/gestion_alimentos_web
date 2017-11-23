@@ -7,6 +7,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 <html>
     <head>  
 	<title>Carga Establecimientos</title>
+  <link rel="icon" href="../resources/images/favicon.ico">
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="../resources/css/materialize.css" />
