@@ -48,8 +48,8 @@ WHERE
                  
    
  print("<h4>Datos de la Empresa</h4>");
-                   print("<div class='table-wrapper'>");
-                   print(" <table>");
+                   
+                   print(" <table class='responsive-table'>");
                      print("<thead>");
                          print("<tr>");
                          print("<th>CUIT</th>");
@@ -70,10 +70,10 @@ WHERE
 										
 		print("</tbody>");
                  print("</table>");
-                  print("</div>");
+               
 print("<h4>Establecimientos Asociados</h4>");
-			print("<div class='table-wrapper'>");
-                            print("<table>");
+			
+                            print("<table  class='responsive-table'>");
 				print("<thead>");
                                     print("<tr>");
 					print("<th>No. RNE</th>");
@@ -93,10 +93,10 @@ print("<h4>Establecimientos Asociados</h4>");
                                     print("</tr>");
 				print("</tbody>");
 			print("</table>");
-			print("</div>");
+	
 print("<h4>Producto Alimenticio Asociado</h4>");
-			print("<div class='table-wrapper'>");
-                           print(" <table>");
+			
+                           print(" <table  class='responsive-table'>");
 				print("<thead>");
                                   print("<tr>");
 					 print("<th>No. RNPA</th>");
@@ -117,7 +117,7 @@ print("<h4>Producto Alimenticio Asociado</h4>");
                                 print("</tr>");
                                print(" </tbody>");
 			print("</table>");
-                   print(" </div>");
+                 
  }
  else  
  {    

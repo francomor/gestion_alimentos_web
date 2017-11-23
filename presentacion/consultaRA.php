@@ -49,10 +49,10 @@
                     </form><!-- finForm_Buscar -->
           
                 <!-- Table -->
-					<section>
+					
                  <div id="consulta">  </div> <!-- aca cierra el div de la consulta-->
                    
-                </section>
+                
                 
                 
 
@@ -74,15 +74,7 @@
 			   }  
         </script>
         <!-- Scripts -->
-			<script src="../resources/js/jquery.min.js"></script>
-			<script src="../resources/js/jquery.scrolly.min.js"></script>
-			<script src="../resources/js/jquery.dropotron.min.js"></script>
-			<script src="../resources/js/skel.min.js"></script>
-			<script src="../resources/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="../resources/js/main.js"></script>
-            <script src="../resources/js/materialize.js"></script>
-           	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script> 
+		
        
 
 
