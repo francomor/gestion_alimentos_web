@@ -24,7 +24,7 @@
 			</ul>
                     </li>
                     <li>
-                        <a>Conultas</a>
+                        <a>Consultas</a>
                         <ul>
                             <li><a  href="consultaRE.php" >Consultar RNE</a></li>
                             <li><a href="consultaRA.php">Consultar RNPA</a></li>

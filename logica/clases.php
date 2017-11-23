@@ -6,11 +6,11 @@ class Rubro{
     private $id;
     private $nombre;
 
-    
-    public function __construct($nombre) {
-        $this->nombre=$nombre;
+    public function __construct() {
+        $this->nombre="";
         $this->id=$this->recuperarID($nombre);
     }
+    
     
     public function getId() {
         return $this->id;

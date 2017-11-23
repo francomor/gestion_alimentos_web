@@ -55,13 +55,13 @@ error_reporting(E_ALL ^ E_NOTICE);
                                     <h4>Datos del Establecimiento</h4></br>
                                     </div>
                                     <div class="input-field col s12">
-                                        <input name="nombre" id="nombre" type="text" class="validate" required pattern="[A-Za-z]" required="true" value="A">
+                                        <input name="nombre" id="nombre" type="text" class="validate" required pattern="([A-ZÁÉÍÓÚa-zñáéíóú]+[\s]*)+" required="true" value="A">
                                     <label >Nombre del Establecimiento:</label>
                                     </div>
 
                                     <div class="input-field col s6">
                                     <select  name="categoria" id="categoria" required="true">
-                                      <option value="seleccionar..." disabled selected>sleccionar...</option>
+                                      <option value="seleccionar..." disabled selected>seleccionar...</option>
                                       <option value="A">A</option>
                                       <option value="B">B</option>
                                       <option value="C">C</option>
@@ -71,11 +71,11 @@ error_reporting(E_ALL ^ E_NOTICE);
                                     </div>
                                     <div class="input-field col s6">
                                         <input  name="nro_factura" type="number" class="validate" value="" >
-                                      <label >No. Factura: </label>
+                                      <label >Nro. Factura: </label>
                                     </div>
 
                                     <div class="input-field col s6">
-                                      <input name="domicilio" type="text" class="validate" required pattern="[A-Za-z0-9]+" required="true" value="">
+                                      <input name="domicilio" type="text" class="validate" required pattern="([A-ZÁÉÍÓÚa-zñáéíóú0-9]+[\s]*)+" required="true" value="">
                                       <label >Domicilio: </label>
                                     </div>
                                     <div class="input-field col s6">
