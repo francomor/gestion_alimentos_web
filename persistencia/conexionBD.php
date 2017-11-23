@@ -9,11 +9,10 @@ error_reporting(E_ALL);
 class ConexionBD {
 
     private $_connection;
-    private $_results;
     private static $_instance; //The single instance
     private $_host = "localhost";
     private $_username = "root";
-    private $_password = "admin";
+    private $_password = "1707yoss";
     private $_database = "uresa";
 
     /*
@@ -48,9 +47,9 @@ class ConexionBD {
     }
 
     public function insertar($consulta) {
-        $guardado=false;
+        $guardado = false;
         if ($this->_connection->query($consulta) === TRUE) {
-            $guardado=true;
+            $guardado = true;
             echo "New record created successfully";
         } else {
             echo "Error: " . $consulta . "<br>" . $this->_connection->error;
@@ -67,44 +66,31 @@ class ConexionBD {
     }
 
     public function recuperar($consulta) {
-        $_res= array();
+        $_res = array();
         if ($resultado = $this->_connection->query($consulta)) {
             /* obtener el array de objetos */
             while ($fila = $resultado->fetch_row()) {
-                //printf("%s \n", $fila[0]);
-                //$this->_results[] = $fila;
                 $_res[] = $fila;
             }
 
             /* liberar el conjunto de resultados */
-            
+
             mysqli_free_result($resultado);
-            //$resultado->close();
-            //unset($resultado);
-            
         }
         return $_res;
-        //return $this->_results;
     }
-    
-    public function recuperar1($consulta)
-            {
-        $_res= array();
+
+    public function recuperar1($consulta) {
+        $_res = array();
         if ($resultado = $this->_connection->query($consulta)) {
-                while($row = $resultado->fetch_array(MYSQLI_ASSOC))
-                    {
-                        //$this->_results[] = $row;
-                        $_res[] = $row;
-                        
-                    }
-                   mysqli_free_result($resultado);
-
+            while ($row = $resultado->fetch_array(MYSQLI_ASSOC)) {
+                $_res[] = $row;
             }
-            return $_res;
-            //return $this->_results;
-            }
+            mysqli_free_result($resultado);
+        }
+        return $_res;
+    }
 
-    
     public function existe($consulta) {
         $result = false;
         if ($resultado = $this->_connection->query($consulta)) {
@@ -112,28 +98,25 @@ class ConexionBD {
             if ($row_cnt > 0) {
                 $result = true;
             }
-        }
-        else {
+        } else {
             echo "Error: " . $consulta . "<br>" . $this->_connection->error;
         }
-       
+
         return $result;
     }
-    
-    public function cantidad_registros($consulta){
-         $row_cnt=-1;
-         if ($resultado = $this->_connection->query($consulta)) {
-             $row_cnt = $resultado->num_rows;
-         }
-          else {
+
+    public function cantidad_registros($consulta) {
+        $row_cnt = -1;
+        if ($resultado = $this->_connection->query($consulta)) {
+            $row_cnt = $resultado->num_rows;
+        } else {
             echo "Error: " . $consulta . "<br>" . $this->_connection->error;
         }
         return $row_cnt;
     }
 
     public function cerrarConexion() {
-        //$this->_connection->close();
-        //mysqli_close($this->_connection);
+        $this->_connection->close();
     }
 
 }

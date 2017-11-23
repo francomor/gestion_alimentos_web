@@ -3,20 +3,20 @@
     <head>
         <title>URESA</title>
 	<meta charset="utf-8" />
-	<link rel="icon" href="../resources/images/favicon.ico">
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<!--[if lte IE 8]><script src="../resources/js/ie/html5shiv.js"></script><![endif]-->
+        <link rel="icon" href="../resources/images/favicon.ico">
 	<link rel="stylesheet" href="../resources/css/main.css" />
-	<!--[if lte IE 9]><link rel="stylesheet" href="../resources/css/ie9.css" /><![endif]-->
-	<!--[if lte IE 8]><link rel="stylesheet" href="../resources/css/ie8.css" /><![endif]-->
+
     </head>
-<body class="landing">
-    <div id="page-wrapper">
-          	<div><?php
+<body class="landing" style="background: #1c1d26;>
+<div><?php
 	
 		include("header.php");
     ?></div>
 
+    <div id="page-wrapper">
+          	
 	<!-- Banner -->
         <div id="inicio">
             <section id="banner">
@@ -33,15 +33,6 @@
 
 
   
-		<!-- Scripts -->
-			<script src="../resources/js/jquery.min.js"></script>
-			<script src="../resources/js/jquery.scrolly.min.js"></script>
-			<script src="../resources/js/jquery.dropotron.min.js"></script>
-			<script src="../resources/js/jquery.scrollex.min.js"></script>
-			<script src="../resources/js/skel.min.js"></script>
-			<script src="../resources/js/util.js"></script>
-			<!--[if lte IE 8]><script src="../resources/js/ie/respond.min.js"></script><![endif]-->
-			<script src="../resources/js/main.js"></script>
-
+		
 	</body>
 </html>

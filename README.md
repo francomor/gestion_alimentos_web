@@ -1,5 +1,3 @@
-# gestion_alimentos
-
 Sistema de gestion de alimentos
 RNE - RNPA
 

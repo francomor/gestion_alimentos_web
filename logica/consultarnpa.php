@@ -49,19 +49,19 @@ WHERE
    
  print("<h4>Datos de la Empresa</h4>");
                    
-                   print(" <table class='responsive-table'>");
-                     print("<thead>");
-                         print("<tr>");
-                         print("<th>CUIT</th>");
-			print("<th>Nombre</th>");
-			print("<th>Razón Social </th>");
-                        print("<th>Email</th>");
-                          print("<th>Telefono</th>");
-                         print("</tr>");
-			print("</thead>");
-			print("<tbody>");
-                         print("<tr>");
-			 print ("<TD>" . $empresa[0][0] . "</TD>\n");
+ print(" <table class='responsive-table'>");
+ print("<thead>");
+ print("<tr>");
+ print("<th>CUIT: </th>");
+ print("<th>Nombre: </th>");
+ print("<th>Razón Social: </th>");
+ print("<th>Email:</th>");
+ print("<th>Telefono:</th>");
+ print("</tr>");
+ print("</thead>");
+	print("<tbody>");
+            print("<tr>");
+			print ("<TD>" . $empresa[0][0] . "</TD>\n");
                           print ("<TD>" . $empresa[0][2] . "</TD>\n");
                           print ("<TD>" . $empresa[0][3] . "</TD>\n");
                           print ("<TD>" . $empresa[0][1] . "</TD>\n");
@@ -69,18 +69,18 @@ WHERE
                           print("</tr>");
 										
 		print("</tbody>");
-                 print("</table>");
+print("</table>");
                
 print("<h4>Establecimientos Asociados</h4>");
 			
                             print("<table  class='responsive-table'>");
 				print("<thead>");
                                     print("<tr>");
-					print("<th>No. RNE</th>");
-                                       print(" <th>Vencimiento RNE</th>");
-					print("<th>Nombre Establecimiento </th>");
-					print("<th>Telefono</th>");
-                                       print(" <th>Direccion</th>");
+					print("<th>No. RNE: </th>");
+                                       print(" <th>Vencimiento RNE: </th>");
+					print("<th>Nombre: </th>");
+					print("<th>Telefono: </th>");
+                                       print(" <th>Direccion: </th>");
                                     print("</tr>");
 				print("</thead>");
 				print("<tbody>");
@@ -100,10 +100,10 @@ print("<h4>Producto Alimenticio Asociado</h4>");
 				print("<thead>");
                                   print("<tr>");
 					 print("<th>No. RNPA</th>");
-                                         print("<th>Nom. Producto</th>");
-                                         print("<th>Vencimiento RNPA</th>");
-                                         print("<th>Marca</th>");
-                                         print("<th>No. RNE</th>");
+                                         print("<th>Nom. Producto:</th>");
+                                         print("<th>Vencimiento RNPA:</th>");
+                                         print("<th>Marca:</th>");
+                                         print("<th>No. RNE:</th>");
                                          
                                  print("</tr>");
 				 print("</thead>");
@@ -113,7 +113,7 @@ print("<h4>Producto Alimenticio Asociado</h4>");
                                          print ("<TD>" . $producto[0][2] . "</TD>\n");
                                          print ("<TD>" . $producto[0][3] . "</TD>\n");
                                          print ("<TD>" . $producto[0][4] . "</TD>\n");
-                                         print ("<TD>" . $establecimiento[0][5] . "</TD>\n");
+                                         print ("<TD>" . $establecimiento[0][4] . "</TD>\n");
                                 print("</tr>");
                                print(" </tbody>");
 			print("</table>");

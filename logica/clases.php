@@ -1,17 +1,18 @@
 <?php
+
 include_once("../persistencia/conexionBD.php");
 error_reporting(E_ALL ^ E_NOTICE);
 
-class Rubro{
+class Rubro {
+
     private $id;
     private $nombre;
 
-    public function __construct() {
-        $this->nombre="";
-        $this->id=$this->recuperarID($nombre);
+    public function __construct($nombre) {
+        $this->nombre = $nombre;
+        $this->id = $this->recuperarID($nombre);
     }
-    
-    
+
     public function getId() {
         return $this->id;
     }
@@ -20,45 +21,49 @@ class Rubro{
         $this->id = $id;
     }
 
-    public function  getNombre() {
+    public function getNombre() {
         return $this->nombre;
     }
 
-    public function  setNombre($nombre) {
+    public function setNombre($nombre) {
         $this->nombre = $nombre;
     }
 
-     public function existe($nombre){
+    public function existe($nombre) {
         $con = ConexionBD::getConexion();
-        $result=$con->existe("select nombre from rubro where nombre='".$nombre."'");
+        $result = $con->existe("select nombre from rubro where nombre='" . $nombre . "'");
         return $result;
     }
-    
-    public function insertar($nombre){
+
+    public function insertar($nombre) {
         $con = ConexionBD::getConexion();
-        $con->insertar("INSERT INTO `rubro`(`id`, `nombre`) VALUES (default,'".$nombre."')");
+        $con->insertar("INSERT INTO `rubro`(`id`, `nombre`) VALUES (default,'" . $nombre . "')");
     }
-    
-        public function recuperarNombre(){
-        
+
+    public function recuperarNombre() {
+
         $con = ConexionBD::getConexion();
         $result = $con->recuperar1("select nombre from rubro");
         return $result;
     }
-       public function cant_registros(){
+
+    public function cant_registros() {
         $con = ConexionBD::getConexion();
         $result = $con->cantidad_registros("select nombre from rubro");
         return $result;
     }
-    
-        public function recuperarID($nombre){
-        
+
+    public function recuperarID($nombre) {
+
         $con = ConexionBD::getConexion();
-        $result = $con->recuperar("select id from rubro where nombre='".$nombre."'");
+        $result = $con->recuperar("select id from rubro where nombre='" . $nombre . "'");
         return $result[0][0];
     }
+
 }
-class Establecimiento{
+
+class Establecimiento {
+
     private $id;
     private $categoria;
     private $direccion;
@@ -70,18 +75,16 @@ class Establecimiento{
     private $id_Categoria;
     private $id_Localidad;
     private $rne;
-    private $rubro=array();
-    
+    private $rubro = array();
 
-    public function addRubro(Rubro $rubro)
-    {
+    public function addRubro(Rubro $rubro) {
         $this->rubro[] = $rubro;
     }
-      public function getRubros()
-    {
+
+    public function getRubros() {
         return $this->rubro;
     }
-    
+
     public function getId() {
         return $this->id;
     }
@@ -89,7 +92,6 @@ class Establecimiento{
     public function setId($id) {
         $this->id = $id;
     }
-
 
     public function getDireccion() {
         return $this->direccion;
@@ -105,10 +107,9 @@ class Establecimiento{
 
     public function setFechaDeCarga() {
         date_default_timezone_set('UTC');
-        $fecha=date("Y") . "-" . date("m") . "-" . date("d");  
-        $this->fechaDeCarga=$fecha;
+        $fecha = date("Y") . "-" . date("m") . "-" . date("d");
+        $this->fechaDeCarga = $fecha;
     }
-
 
     public function getNombre() {
         return $this->nombre;
@@ -162,44 +163,30 @@ class Establecimiento{
         return $this->rne;
     }
 
-    public function setRne(RNE $rne)
-    {
+    public function setRne(RNE $rne) {
         $this->rne = $rne;
     }
-    
-       
-    public function __construct(){
+
+    public function __construct() {
         
     }
-     public function existe($rne){
+
+    public function existe($rne) {
         $con = ConexionBD::getConexion();
-        $result=$con->existe("select nombre from establecimiento where nro_rne=".$rne);
+        $result = $con->existe("select nombre from establecimiento where nro_rne=" . $rne);
         return $result;
     }
-    
-    public function insertar(){
+
+    public function get_Id_Categoria($categoria) {
         $con = ConexionBD::getConexion();
-        $con->insertar("INSERT INTO `rubro`(`id`, `nombre`) VALUES (default,'rubro5')");
-    }
-    
-        public function recuperarNombre(){
-        
-        $con = ConexionBD::getConexion();
-        $result = $con->recuperar("select nombre from rubro");
+        $result = $con->recuperar("select id from categoria where nombre='" . $categoria . "'");
         return $result;
     }
-    
-    public function get_Id_Categoria($categoria){
+
+    public function guardar($est) {
         $con = ConexionBD::getConexion();
-        $result = $con->recuperar("select id from categoria where nombre='".$categoria."'");
-        return $result;
-    }
-    
-    
-    public function guardar($est){
-        $con = ConexionBD::getConexion();
-        
-        $consulta="        INSERT
+
+        $consulta = "        INSERT
 INTO
     `establecimiento`(
         `id`,
@@ -216,35 +203,38 @@ INTO
     )
 VALUES(
     DEFAULT,
-    '".$est->getDireccion()."',
-    '".$est->getFechaDeCarga()."',
-    '".$est->getNombre()."',
-    '".$est->getTelefono()."',
-    '".$est->getRne()->getNumero()."',
-    '".$est->getRne()->getFecha_vencimiento()."',
-    '".$est->getNro_Factura()."',
-    ".$est->getCUIT_empresa().",
-    ".$est->getId_Localidad().",
-    ".$est->getId_Categoria()."
+    '" . $est->getDireccion() . "',
+    '" . $est->getFechaDeCarga() . "',
+    '" . $est->getNombre() . "',
+    '" . $est->getTelefono() . "',
+    '" . $est->getRne()->getNumero() . "',
+    '" . $est->getRne()->getFecha_vencimiento() . "',
+    '" . $est->getNro_Factura() . "',
+    " . $est->getCUIT_empresa() . ",
+    " . $est->getId_Localidad() . ",
+    " . $est->getId_Categoria() . "
 )";
-$result = $con->insertar($consulta);
+        $result = $con->insertar($consulta);
         return $result;
-       }
-       
-       public function establecimientoXrubro($rub,$id){
-           $con = ConexionBD::getConexion();
-           
-           for($i=0 ; $i < count($rub) ; $i++)
-           {
-                $con->insertar("INSERT INTO `establecimiento_has_rubro`(`Establecimiento_id`, `Rubro_id`) VALUES (".$id.",".$rub[$i]->getId().")");
-            }
-       }
-       public function obtenerUltimoId(){
-            $con = ConexionBD::getConexion();
-            $result = $con->recuperar("SELECT MAX(id) AS id FROM establecimiento");
-            return $result[0][0];
-       }
+    }
+
+    public function establecimientoXrubro($rub, $id) {
+        $con = ConexionBD::getConexion();
+
+        for ($i = 0; $i < count($rub); $i++) {
+            $con->insertar("INSERT INTO `establecimiento_has_rubro`(`Establecimiento_id`, `Rubro_id`) VALUES (" . $id . "," . $rub[$i]->getId() . ")");
+        }
+    }
+
+    public function obtenerUltimoId() {
+        $con = ConexionBD::getConexion();
+        $result = $con->recuperar("SELECT MAX(id) AS id FROM establecimiento");
+        return $result[0][0];
+    }
+
 }
+
+//end establecimiento
 
 class RNE {
 
@@ -252,17 +242,17 @@ class RNE {
     private $numero;
     public $m_Establecimiento;
 
-
-    public function __construct($numero,$fecha_vencimiento){
-      $this->numero=$numero;
-      $this->fecha_vencimiento=$fecha_vencimiento;
+    public function __construct($numero, $fecha_vencimiento) {
+        $this->numero = $numero;
+        $this->fecha_vencimiento = $fecha_vencimiento;
     }
+
     public function getFecha_vencimiento() {
         return $this->fecha_vencimiento;
     }
-    
+
     public function setFecha_vencimiento($fecha) {
-               $this->fecha_vencimiento = $fecha;
+        $this->fecha_vencimiento = $fecha;
     }
 
     public function getNumero() {
@@ -273,14 +263,14 @@ class RNE {
         $this->numero = $numero;
     }
 
+}
 
-}//end RNE
+//end RNE
 
 class Localidad {
 
     private $id;
     private $nombre;
-
 
     public function getId() {
         return $this->id;
@@ -298,14 +288,15 @@ class Localidad {
     public function setNombre($nombre) {
 
         $this->nombre = $nombre;
-
     }
-    
-    public function obtener_Id_Localidad($localidad){
+
+    public function obtener_Id_Localidad($localidad) {
         $con = ConexionBD::getConexion();
-        $result = $con->recuperar("select id from localidad where nombre='".$localidad."'");
+        $result = $con->recuperar("select id from localidad where nombre='" . $localidad . "'");
         return $result[0][0];
     }
 
-}//end localidad
+}
+
+//end localidad
 ?>
