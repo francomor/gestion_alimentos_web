@@ -12,7 +12,7 @@ class ConexionBD {
     private static $_instance; //The single instance
     private $_host = "localhost";
     private $_username = "root";
-    private $_password = "1707yoss";
+    private $_password = "admin";
     private $_database = "uresa";
 
     /*
