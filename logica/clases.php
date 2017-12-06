@@ -232,6 +232,18 @@ VALUES(
         return $result[0][0];
     }
 
+    public function obtenerCantidadPorAño() {
+        $con = ConexionBD::getConexion();
+        $consulta= "select year(fecha_carga) as año, count(establecimiento.id) as cantidad
+                    from establecimiento
+                    group by año
+                    order by año asc";
+
+        $result = $con->recuperar1($consulta);
+        return $result;
+    }
+
+
 }
 
 //end establecimiento
@@ -299,4 +311,21 @@ class Localidad {
 }
 
 //end localidad
+
+
+class Producto_alimenticio {
+    
+        public function obtenerCantidadPorAño() {
+            $con = ConexionBD::getConexion();
+            $consulta= "select year(fecha_carga_solicitud) as año, count(producto_alimenticio.id) as cantidad
+                        from producto_alimenticio
+                        group by año
+                        order by año asc";
+    
+            $result = $con->recuperar1($consulta);
+            return $result;
+        }
+    }
+
+//end Producto_alimenticio
 ?>
