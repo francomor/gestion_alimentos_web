@@ -50,7 +50,6 @@ class ConexionBD {
         $guardado = false;
         if ($this->_connection->query($consulta) === TRUE) {
             $guardado = true;
-            echo "New record created successfully";
         } else {
             echo "Error: " . $consulta . "<br>" . $this->_connection->error;
         }

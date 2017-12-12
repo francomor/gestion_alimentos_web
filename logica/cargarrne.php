@@ -40,7 +40,7 @@ if (isset($_POST['submit'])) {
         }
     }
 
-   print("<script>window.location='../presentacion/establecimientos.php';</script>");
-    //header("Location:".$_SERVER['HTTP_REFERER']); 
+   //print("<script>window.location='../presentacion/establecimientos.php';</script>");
+    header("Location:".$_SERVER['HTTP_REFERER']); 
 }
  

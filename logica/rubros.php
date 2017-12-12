@@ -1,25 +1,12 @@
 	
  <style>
  select{
-	 background:none;
-	 border:none;
-	 color:#ffffff;
+	 border-bottom-color:#FFF;
+	 border-color:#FFF;
+	 font-weight:200;
+	 color:#000;
 	 }
-	select hover{
-	 	border:hidden;
-	 }
-select.browser-default {
-  display: block;
-  height:auto;
-  size:auto;
-  -webkit-scrollbar :display:none;
-  -moz-scrollbar:display:none;
-  -o-scrollbar :display:none;
-  -google-ms-scrollbar:display:none;
-  -khtml-scrollbar:display:none;
-}
-
- </style>   						
+ </style>
 <?php 
 							
 include_once("../logica/clases.php");
