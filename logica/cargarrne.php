@@ -1,5 +1,4 @@
 <?php
-
 include_once("../persistencia/conexionBD.php");
 include_once("../logica/clases.php");
 if (isset($_POST['submit'])) {
@@ -21,8 +20,6 @@ if (isset($_POST['submit'])) {
     for ($i = 0; $i < sizeof($rub) - 1; $i++) {
         $est->addRubro(new Rubro($rub[$i]));
     }
-
-
     if ($est->getRne()->getNumero() === "") {
         if ($est->guardar($est)) {
             $est->establecimientoXrubro($est->getRubros(), $est->obtenerUltimoId());
@@ -38,9 +35,10 @@ if (isset($_POST['submit'])) {
                 print("<script>alert('El establecimiento se ha guardado correctamente');</script>");
             }
         }
-    }
 
-   //print("<script>window.location='../presentacion/establecimientos.php';</script>");
-    header("Location:".$_SERVER['HTTP_REFERER']); 
+    }
+    print("<script>window.location='../presentacion/establecimientos.php';</script>");
+
 }
- 
+    
+?>
